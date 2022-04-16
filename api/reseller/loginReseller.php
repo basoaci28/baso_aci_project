@@ -1,6 +1,6 @@
 <?php
 
-require dirname(__FILE__) . "/../../include/dbConnect.php";
+require dirname(__FILE__) . "/../../dbConnect.php";
 
 header('Access-Control-Allow-Origin');
 
