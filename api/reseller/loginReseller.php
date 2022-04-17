@@ -2,94 +2,94 @@
 
 require dirname(__FILE__) . "/../../dbConnect.php";
 
-header('Access-Control-Allow-Origin');
+// header('Access-Control-Allow-Origin');
 
-mysqli_connect_errno();
-date_default_timezone_set('Asia/Jakarta');
+// mysqli_connect_errno();
+// date_default_timezone_set('Asia/Jakarta');
 
-$json = array(
-    "response_status" => "OK",
-    "response_message" => "",
-    "data" => array(),
-);
+// $json = array(
+//     "response_status" => "OK",
+//     "response_message" => "",
+//     "data" => array(),
+// );
 
-$no_hp = isset($_POST['no_hp']) ? $_POST['no_hp'] : "";
-$password = isset($_POST['password']) ? $_POST['password'] : "";
-$sql = $con->query("SELECT * FROM reseller WHERE no_hp = '" . $no_hp . "' AND password = '" . $password . "' ");
+// $no_hp = isset($_GET['no_hp']) ? $_GET['no_hp'] : "";
+// $password = isset($_GET['password']) ? $_GET['password'] : "";
+// $sql = $con->query("SELECT * FROM reseller WHERE no_hp = '" . $no_hp . "' AND password = '" . $password . "' ");
 
-$row = $sql->num_rows;
+// $row = $sql->num_rows;
 
-if ($row > 0) {
-    while ($rowResult = $sql->fetch_object()) {
-        $arr_row = array();
-        $arr_row['nama'] = $rowResult->nama;
-        $arr_row['email'] = $rowResult->email;
-        $arr_row['alamat'] = $rowResult->alamat;
-        $arr_row['foto'] = $rowResult->foto;
-        $arr_row['no_hp'] = $rowResult->no_hp;
-        $json['data'][] = $arr_row;
-    }
-} else {
-    $json['response_status'] = "Error";
-    $json['response_message'] = "No Hp atau Password salah";
-}
+// if ($row > 0) {
+//     while ($rowResult = $sql->fetch_object()) {
+//         $arr_row = array();
+//         $arr_row['nama'] = $rowResult->nama;
+//         $arr_row['email'] = $rowResult->email;
+//         $arr_row['alamat'] = $rowResult->alamat;
+//         $arr_row['foto'] = $rowResult->foto;
+//         $arr_row['no_hp'] = $rowResult->no_hp;
+//         $json['data'][] = $arr_row;
+//     }
+// } else {
+//     $json['response_status'] = "Error";
+//     $json['response_message'] = "No Hp atau Password salah";
+// }
 
-header('Content-Type: application/json');
-echo json_encode($json, JSON_PRETTY_PRINT);
+// header('Content-Type: application/json');
+// echo json_encode($json, JSON_PRETTY_PRINT);
 
 //an array to display response
-// $response = array();
+$response = array();
 
-// if (isTheseParametersAvailable(array('no_hp', 'password'))) {
+if (isTheseParametersAvailable(array('no_hp', 'password'))) {
 
-//     $no_hp = $_POST['no_hp'];
-//     $password = md5($_POST['password']);
+    $no_hp = $_POST['no_hp'];
+    $password = $_POST['password'];
 
-//     $stmt = $con->prepare("SELECT id, nama, email, password, no_hp FROM user WHERE no_hp = ? AND password = ?");
-//     $stmt->bind_param("ss", $no_hp, $password);
+    $stmt = $con->prepare("SELECT id, nama, email, password, no_hp FROM reseller WHERE no_hp = ? AND password = ?");
+    $stmt->bind_param("ss", $no_hp, $password);
 
-//     $stmt->execute();
+    $stmt->execute();
 
-//     $stmt->store_result();
+    $stmt->store_result();
 
-//     if ($stmt->num_rows > 0) {
+    if ($stmt->num_rows > 0) {
 
-//         $stmt->bind_result($id, $nama, $email, $password, $no_hp);
-//         $stmt->fetch();
+        $stmt->bind_result($id, $nama, $email, $password, $no_hp);
+        $stmt->fetch();
 
-//         $user = array(
-//             'id' => $id,
-//             'nama' => $nama,
-//             'email' => $email,
-//             'password' => $password,
-//             'no_hp' => $no_hp,
-//         );
+        $user = array(
+            'id' => $id,
+            'nama' => $nama,
+            'email' => $email,
+            'password' => $password,
+            'no_hp' => $no_hp,
+        );
 
-//         $response['error'] = false;
-//         $response['message'] = 'Login successfull';
-//         $response['user'] = $user;
-//     } else {
-//         $response['error'] = false;
-//         $response['message'] = 'Invalid nama or password';
-//     }
-// }
+        $response['error'] = false;
+        $response['message'] = 'Login successfull';
+        $response['user'] = $user;
+    } else {
+        $response['error'] = false;
+        $response['message'] = 'Invalid nama or password';
+    }
+}
 
-// //displaying the response in json structure
-// echo json_encode($response);
+//displaying the response in json structure
+echo json_encode($response);
 
-// //function validating all the paramters are available
-// //we will pass the required parameters to this function
-// function isTheseParametersAvailable($params)
-// {
-//     // traversing through all the parameters
-//     foreach ($params as $param) {
-//         //if the paramter is not available
-//         //if the paramter is not available
-//         if (!isset($_POST[$param])) {
-//             //return false
-//             return false;
-//         }
-//     }
-//     // return true if every param is available
-//     return true;
-// }
+//function validating all the paramters are available
+//we will pass the required parameters to this function
+function isTheseParametersAvailable($params)
+{
+    // traversing through all the parameters
+    foreach ($params as $param) {
+        //if the paramter is not available
+        //if the paramter is not available
+        if (!isset($_POST[$param])) {
+            //return false
+            return false;
+        }
+    }
+    // return true if every param is available
+    return true;
+}
