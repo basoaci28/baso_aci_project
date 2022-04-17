@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . "/../../include/dbConnect.php";
+require_once dirname(__FILE__) . "/../../dbConnect.php";
 
 $sql = "SELECT * FROM reseller ORDER BY id ASC";
 $query = mysqli_query($con, $sql);

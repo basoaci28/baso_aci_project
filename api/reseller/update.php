@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . "/../../include/dbConnect.php";
+require_once dirname(__FILE__) . "/../../dbConnect.php";
 
 // Menangkap variable parameter get
 $id = $_GET['id'];
