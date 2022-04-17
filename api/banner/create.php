@@ -1,6 +1,6 @@
 <?php
 // Koneksi database
-require_once dirname(__FILE__) . "/../../include/dbConnect.php";
+require_once dirname(__FILE__) . "/../../dbConnect.php";
 
 // Mendapatkan variable post
 $nama = isset($_POST["nama"]) ? $_POST["nama"] : "";
