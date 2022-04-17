@@ -70,7 +70,7 @@ if (isTheseParametersAvailable(array('no_hp', 'password'))) {
         $response['user'] = $user;
     } else {
         $response['error'] = false;
-        $response['message'] = 'Invalid nama or password';
+        $response['message'] = 'Invalid no_hp or password';
     }
 }
 
