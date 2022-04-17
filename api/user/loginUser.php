@@ -1,8 +1,6 @@
 <?php
 
-require dirname(__FILE__) . "/../../include/dbConnect.php";
-
-header('Access-Control-Allow-Origin');
+require dirname(__FILE__) . "/../../dbConnect.php";
 
 //an array to display response
 $response = array();

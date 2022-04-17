@@ -2,41 +2,6 @@
 
 require dirname(__FILE__) . "/../../dbConnect.php";
 
-// header('Access-Control-Allow-Origin');
-
-// mysqli_connect_errno();
-// date_default_timezone_set('Asia/Jakarta');
-
-// $json = array(
-//     "response_status" => "OK",
-//     "response_message" => "",
-//     "data" => array(),
-// );
-
-// $no_hp = isset($_GET['no_hp']) ? $_GET['no_hp'] : "";
-// $password = isset($_GET['password']) ? $_GET['password'] : "";
-// $sql = $con->query("SELECT * FROM reseller WHERE no_hp = '" . $no_hp . "' AND password = '" . $password . "' ");
-
-// $row = $sql->num_rows;
-
-// if ($row > 0) {
-//     while ($rowResult = $sql->fetch_object()) {
-//         $arr_row = array();
-//         $arr_row['nama'] = $rowResult->nama;
-//         $arr_row['email'] = $rowResult->email;
-//         $arr_row['alamat'] = $rowResult->alamat;
-//         $arr_row['foto'] = $rowResult->foto;
-//         $arr_row['no_hp'] = $rowResult->no_hp;
-//         $json['data'][] = $arr_row;
-//     }
-// } else {
-//     $json['response_status'] = "Error";
-//     $json['response_message'] = "No Hp atau Password salah";
-// }
-
-// header('Content-Type: application/json');
-// echo json_encode($json, JSON_PRETTY_PRINT);
-
 //an array to display response
 $response = array();
 
