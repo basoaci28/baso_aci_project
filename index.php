@@ -34,7 +34,7 @@ while ($products_data = mysqli_fetch_assoc($result)) {
     <td> ' . $stok . ' </td>
     <td> ' . $harga . ' </td>
     <td>
-    <img src="./image/product/' . $gambar . '" width=130px;>
+    <img src="' . $gambar . '" width=130px;>
     </td>
     <td><a href="./api/product/update.php">Edit</a>' . '<a href="./api/product/delete.php">Hapus</a></td>
     </tr>';
