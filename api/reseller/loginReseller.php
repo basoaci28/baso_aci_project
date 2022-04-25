@@ -10,7 +10,7 @@ if (isTheseParametersAvailable(array('no_hp', 'password'))) {
     $no_hp = $_POST['no_hp'];
     $password = $_POST['password'];
 
-    $stmt = $con->prepare("SELECT id, nama, email, password, no_hp FROM reseller WHERE no_hp = ? AND password = ?");
+    $stmt = $con->prepare("SELECT id, nama, email, password,foto, no_hp FROM reseller WHERE no_hp = ? AND password = ?");
     $stmt->bind_param("ss", $no_hp, $password);
 
     $stmt->execute();
@@ -19,7 +19,7 @@ if (isTheseParametersAvailable(array('no_hp', 'password'))) {
 
     if ($stmt->num_rows > 0) {
 
-        $stmt->bind_result($id, $nama, $email, $password, $no_hp);
+        $stmt->bind_result($id, $nama, $email, $password, $foto, $no_hp);
         $stmt->fetch();
 
         $user = array(
@@ -27,6 +27,7 @@ if (isTheseParametersAvailable(array('no_hp', 'password'))) {
             'nama' => $nama,
             'email' => $email,
             'password' => $password,
+            'foto' => $foto,
             'no_hp' => $no_hp,
         );
 
