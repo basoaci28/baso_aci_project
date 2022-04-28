@@ -1,6 +1,7 @@
 <?php
 
-$inputImage = (object) @$_FILES['image'];
+$inputImage = $_FILES['image']['name'];
+$inputImageTemp = $_FILES['image']['tmp_name'];
 
 $data = "";
 
@@ -9,14 +10,14 @@ if (!@$inputImage->name) {
 }
 
 $folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/image/reseller";
-$newPath = $folderUpload . "/" . @$inputImage->name;
+$newPath = $folderUpload."/". $inputImage;
 if (!is_dir($folderUpload)) {
     # jika tidak maka folder harus dibuat terlebih dahulu
     mkdir($folderUpload, 0777, $rekursif = true);
 }
 
 $uploadFotoSukses = move_uploaded_file(
-    $inputImage->tmp_name, $newPath
+    $inputImageTemp, $newPath
 );
 
 if ($uploadFotoSukses) {
