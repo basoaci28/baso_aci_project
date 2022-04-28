@@ -1,7 +1,6 @@
 <?php
 
 $inputImage = $_FILES['image']['name'];
-$inputImageTemp = $_FILES['image']['tmp_name'];
 
 $data = "";
 
@@ -17,14 +16,14 @@ if (!is_dir($folderUpload)) {
 }
 
 $uploadFotoSukses = move_uploaded_file(
-    $inputImage, $newPath
+    $_FILES["image"]["tmp_name"], $newPath
 );
 
 if ($uploadFotoSukses) {
     $link = $newPath;
     $data = array("message" => "Foto berhasil ditambahkan di {$link}");
 } else {
-    $data = array("message" => "Foto gagal ditambahkan " . $folderUpload . " " . $newPath);
+    $data = array("message" => "Foto gagal ditambahkan ");
 }
 
 // $currentDirectory = "https://" . $_SERVER['HTTP_HOST'];
