@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
         $didUpload = move_uploaded_file($inputImage->tmp_name, $uploadPath);
 
         if ($didUpload) {
-            $data = array("message" => "The file " . basename($inputImage->name) . " has been uploaded");
+            $data = array("message" => "The file " . basename($inputImage->name) . " has been uploaded", "Link" => $uploadPath);
         } else {
             $data = array("message" => "An error occurred. Please contact the administrator.");
         }
@@ -53,5 +53,7 @@ if (isset($_POST['submit'])) {
         }
     }
 
+} else {
+    $data = array("message" => $errors . "These are the errors" . "\n");
 }
 print_r(json_encode($data));
