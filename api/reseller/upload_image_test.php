@@ -8,19 +8,19 @@ if (!@$inputImage->name) {
     $data = array("message" => "Foto tidak boleh kosong.");
 }
 
-$folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/image/reseller/";
-
+$folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/image/reseller";
+$newPath = $folderUpload . "/" . $inputImage->name;
 if (!is_dir($folderUpload)) {
     # jika tidak maka folder harus dibuat terlebih dahulu
     mkdir($folderUpload, 0777, $rekursif = true);
 }
 
 $uploadFotoSukses = move_uploaded_file(
-    $inputImage->tmp_name, "{$folderUpload}/{$inputImage->name}"
+    $inputImage->tmp_name, $newPath
 );
 
 if ($uploadFotoSukses) {
-    $link = "{$folderUpload}/{$inputImage->name}";
+    $link = $newPath;
     $data = array("message" => "Foto berhasil ditambahkan di {$link}");
 } else {
     $data = array("message" => "Foto gagal ditambahkan " . $folderUpload);
