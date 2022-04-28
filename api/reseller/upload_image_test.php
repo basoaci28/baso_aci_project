@@ -22,9 +22,9 @@ $uploadFotoSukses = move_uploaded_file(
 
 if ($uploadFotoSukses) {
     $link = "{$folderUpload}/{$image->name}";
-    $data = array("message" => "{$fileFoto->name} berhasil ditambahkan {$link}");
+    $data = array("message" => "Foto berhasil ditambahkan di {$link}");
 } else {
-    $data = array("message" => "data gagal ditambahkan");
+    $data = array("message" => "Foto gagal ditambahkan");
 }
 
 print_r(json_encode($data));
