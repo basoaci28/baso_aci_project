@@ -10,7 +10,7 @@ if (!$inputImage) {
 if ($inputImage->size > 1000 * 2000) {
     $data = array("message" => "Ukuran maksimal file adalah 1MB.");
 }
-$folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/image/reseller";
+$folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/basoaci-main/image/reseller";
 $newPath = $folderUpload . "/" . basename($inputImage);
 if (!is_dir($folderUpload)) {
     # jika tidak maka folder harus dibuat terlebih dahulu

@@ -1,8 +1,8 @@
 <?php
-define('HOST', 'remotemysql.com');
-define('USER', 'qDmgh8dJsK');
-define('PASS', 'DulfGsq6F1');
-define('DB', 'qDmgh8dJsK');
+define('HOST', 'localhost');
+define('USER', 'id18601187_basoaci28admin');
+define('PASS', 'P0~?Ns&WdIBP0i!g');
+define('DB', 'id18601187_db_basoaci');
 
 // class dbConnect
 // {
