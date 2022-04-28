@@ -5,7 +5,7 @@ $inputImage = (object) @$_FILES['image'];
 $data = "";
 
 if (!@$image->name) {
-    array_push($errorMsg, "Foto tidak boleh kosong.");
+    $data = array("message" => "Foto tidak boleh kosong.");
 }
 
 $folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/image/reseller/";
