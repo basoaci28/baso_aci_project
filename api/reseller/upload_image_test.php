@@ -4,7 +4,7 @@ $inputImage = (object) @$_FILES['image'];
 
 $data = "";
 
-if (!@$image->name) {
+if (!@$inputImage->name) {
     $data = array("message" => "Foto tidak boleh kosong.");
 }
 
@@ -16,14 +16,14 @@ if (!is_dir($folderUpload)) {
 }
 
 $uploadFotoSukses = move_uploaded_file(
-    "{$image->tmp_name}", "{$folderUpload}/{$image->name}"
+    "{$inputImage->tmp_name}", "{$folderUpload}/{$inputImage->name}"
 );
 
 if ($uploadFotoSukses) {
-    $link = "{$folderUpload}/{$image->name}";
+    $link = "{$folderUpload}/{$inputImage->name}";
     $data = array("message" => "Foto berhasil ditambahkan di {$link}");
 } else {
-    $data = array("message" => "Foto gagal ditambahkan" . $folderUpload);
+    $data = array("message" => "Foto gagal ditambahkan " . $folderUpload);
 }
 
 // $currentDirectory = "https://" . $_SERVER['HTTP_HOST'];
