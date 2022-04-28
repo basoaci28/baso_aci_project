@@ -6,7 +6,7 @@ $data = "";
 $errorMsg = [];
 
 if (!@$image->name) {
-    array_push($errorMsg, "File SIM tidak boleh kosong.");
+    array_push($errorMsg, "Foto tidak boleh kosong.");
 }
 
 $folderUpload = $_SERVER['HTTP_HOST'] . "/image/reseller";
