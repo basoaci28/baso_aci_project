@@ -5,7 +5,7 @@ $imagename = $_FILES['image']['name'];
 
 $data = "";
 //tempat foto reseller disimpan
-$target_dir = $_SERVER['DOCUMENT_ROOT'] . '/image/reseller';
+$target_dir = $_SERVER['HTTP_HOST'] . '/image/reseller';
 
 // if (!file_exists($target_dir)) {
 //     mkdir($target_dir, 0777, true);
