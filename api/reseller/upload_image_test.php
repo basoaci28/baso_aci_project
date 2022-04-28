@@ -1,9 +1,9 @@
 <?php
 
-$image = (object) @$_FILES['image'];
+// $image = (object) @$_FILES['image'];
 
-$data = "";
-$errorMsg = [];
+// $data = "";
+// $errorMsg = [];
 
 // if (!@$image->name) {
 //     array_push($errorMsg, "Foto tidak boleh kosong.");
