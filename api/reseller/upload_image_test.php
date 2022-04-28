@@ -9,7 +9,7 @@ if (!@$inputImage->name) {
 }
 
 $folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/image/reseller";
-$newPath = $folderUpload . "/" . $inputImage->name;
+$newPath = $folderUpload . "/" . @$inputImage->name;
 if (!is_dir($folderUpload)) {
     # jika tidak maka folder harus dibuat terlebih dahulu
     mkdir($folderUpload, 0777, $rekursif = true);
