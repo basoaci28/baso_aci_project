@@ -37,23 +37,17 @@ $inputImage = (object) @$_FILES['image'];
 
 $uploadPath = $currentDirectory . $uploadDirectory . basename($inputImage->name);
 
-if (isset($_POST['submit'])) {
+if (empty($errors)) {
+    $didUpload = move_uploaded_file($inputImage->tmp_name, $uploadPath);
 
-    if (empty($errors)) {
-        $didUpload = move_uploaded_file($inputImage->tmp_name, $uploadPath);
-
-        if ($didUpload) {
-            $data = array("message" => "The file " . basename($inputImage->name) . " has been uploaded", "Link" => $uploadPath);
-        } else {
-            $data = array("message" => "An error occurred. Please contact the administrator.");
-        }
+    if ($didUpload) {
+        $data = array("message" => "The file " . basename($inputImage->name) . " has been uploaded", "Link" => $uploadPath);
     } else {
-        foreach ($errors as $error) {
-            $data = array("message" => $error . "These are the errors" . "\n");
-        }
+        $data = array("message" => "An error occurred. Please contact the administrator.");
     }
-
 } else {
-    $data = array("message" => $errors . "These are the errors" . "\n");
+    foreach ($errors as $error) {
+        $data = array("message" => $error . "These are the errors" . "\n");
+    }
 }
 print_r(json_encode($data));
