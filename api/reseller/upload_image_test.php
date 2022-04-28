@@ -16,7 +16,7 @@ if (!is_dir($folderUpload)) {
 }
 
 $uploadFotoSukses = move_uploaded_file(
-    $image->tmp_name, "{$folderUpload}/{$image->name}"
+    "{$image->tmp_name}", "{$folderUpload}/{$image->name}"
 );
 
 if ($uploadFotoSukses) {
