@@ -1,15 +1,14 @@
 <?php
 
-$image = (object) @$_FILES['image'];
+$inputImage = (object) @$_FILES['image'];
 
 $data = "";
-$errorMsg = [];
 
 if (!@$image->name) {
     array_push($errorMsg, "Foto tidak boleh kosong.");
 }
 
-$folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/image/reseller";
+$folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/image/reseller/";
 
 if (!is_dir($folderUpload)) {
     # jika tidak maka folder harus dibuat terlebih dahulu
@@ -17,14 +16,14 @@ if (!is_dir($folderUpload)) {
 }
 
 $uploadFotoSukses = move_uploaded_file(
-    $image->tmp_name, $folderUpload . "/" . $image->name
+    $image->tmp_name, "{$folderUpload}/{$image->name}"
 );
 
 if ($uploadFotoSukses) {
-    $link = $folderUpload . "/" . $image->name;
+    $link = "{$folderUpload}/{$image->name}";
     $data = array("message" => "Foto berhasil ditambahkan di {$link}");
 } else {
-    $data = array("message" => "Foto gagal ditambahkan");
+    $data = array("message" => "Foto gagal ditambahkan" . $folderUpload);
 }
 
 // $currentDirectory = "https://" . $_SERVER['HTTP_HOST'];
