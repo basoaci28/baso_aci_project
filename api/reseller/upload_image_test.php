@@ -33,18 +33,17 @@ $uploadDirectory = "/image/reseller/";
 $errors = []; // Store errors here
 $data = "";
 
-$inputImage = $_FILES['image']['name'];
-$inputImageTemp = $_FILES['image']['tmp_name'];
+$inputImage = (object) @$_FILES['image'];
 
-$uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
+$uploadPath = $currentDirectory . $uploadDirectory . basename($inputImage->name);
 
 if (isset($_POST['submit'])) {
 
     if (empty($errors)) {
-        $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+        $didUpload = move_uploaded_file($inputImage->tmp_name, $uploadPath);
 
         if ($didUpload) {
-            $data = array("message" => "The file " . basename($fileName) . " has been uploaded");
+            $data = array("message" => "The file " . basename($inputImage->name) . " has been uploaded");
         } else {
             $data = array("message" => "An error occurred. Please contact the administrator.");
         }
