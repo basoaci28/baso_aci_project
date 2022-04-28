@@ -10,21 +10,21 @@ if (!$inputImage) {
 }
 
 $folderUpload = "https://" . $_SERVER['HTTP_HOST'] . "/image/reseller";
-$newPath = $folderUpload . "/" . $inputImage;
+$newPath = $folderUpload . "/" . basename($inputImage);
 if (!is_dir($folderUpload)) {
     # jika tidak maka folder harus dibuat terlebih dahulu
     mkdir($folderUpload, 0777, $rekursif = true);
 }
 
 $uploadFotoSukses = move_uploaded_file(
-    $inputImageTemp, $newPath
+    $inputImage, $newPath
 );
 
 if ($uploadFotoSukses) {
     $link = $newPath;
     $data = array("message" => "Foto berhasil ditambahkan di {$link}");
 } else {
-    $data = array("message" => "Foto gagal ditambahkan " . $folderUpload . " " . $inputImageTemp);
+    $data = array("message" => "Foto gagal ditambahkan " . $folderUpload . " " . $newPath);
 }
 
 // $currentDirectory = "https://" . $_SERVER['HTTP_HOST'];
