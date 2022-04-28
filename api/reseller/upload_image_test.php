@@ -24,7 +24,7 @@ if ($uploadFotoSukses) {
     $link = $newPath;
     $data = array("message" => "Foto berhasil ditambahkan di {$link}");
 } else {
-    $data = array("message" => "Foto gagal ditambahkan " . $folderUpload . $newPath);
+    $data = array("message" => "Foto gagal ditambahkan " . $folderUpload . " " . $inputImageTemp);
 }
 
 // $currentDirectory = "https://" . $_SERVER['HTTP_HOST'];
